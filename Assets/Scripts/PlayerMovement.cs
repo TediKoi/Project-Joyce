@@ -23,7 +23,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!IsGrounded())
+        {
+            animator.SetBool("isJumping", true);
+        }
+        else if(IsGrounded())
+        {
+            animator.SetBool("isJumping", false);
+        }
         Flip();
 
     }
@@ -67,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if(context.canceled && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            
             
         }
     }

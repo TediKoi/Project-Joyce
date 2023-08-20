@@ -50,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void AttackDmg()
+    {
+        print("did dmg");
+    }
+
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
@@ -78,6 +83,18 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             }
 
+        }
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            animator.SetTrigger("isAttacking");
+        }
+        if(context.canceled)
+        {
+            
         }
     }
 }

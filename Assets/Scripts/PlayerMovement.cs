@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    private bool canDoubleJump = true;
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -23,14 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!IsGrounded())
-        {
-            animator.SetBool("isJumping", true);
-        }
-        else if(IsGrounded())
-        {
-            animator.SetBool("isJumping", false);
-        }
+        
         Flip();
 
     }
@@ -65,17 +59,25 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
 
-        if(context.performed && IsGrounded())
+        if(context.performed)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             
+            if(IsGrounded() || canDoubleJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                canDoubleJump = !canDoubleJump;
+                animator.SetBool("isJumping", true);
+            }
         }
 
-        if(context.canceled && rb.velocity.y > 0f)
+        if(context.canceled)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            
-            
+            animator.SetBool("isJumping", false);
+            if(rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+
         }
     }
 }

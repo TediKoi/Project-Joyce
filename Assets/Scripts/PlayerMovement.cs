@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
     private bool canDoubleJump = true;
+    
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -19,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private LayerMask groundLayer;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private Transform attackPoint;
+    [SerializeField]
+    private float attackRange = 0.5f;
+    [SerializeField]
+    private LayerMask enemyLayers;
+
 
 
     // Update is called once per frame
@@ -88,7 +96,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in enemiesHit)
+        {
+            print("We hit " + enemy.name);
+        }
+
+        if(context.performed && IsGrounded())
         {
             animator.SetTrigger("isAttacking");
         }
@@ -96,5 +111,14 @@ public class PlayerMovement : MonoBehaviour
         {
             
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

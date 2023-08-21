@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
     private bool canDoubleJump = true;
-    
+    private int currentDmg = 1;
+    private float attackRate = 2f;
+    private float nextAttackTime = 0f;
+
 
     [SerializeField]
     private Rigidbody2D rb;
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         Flip();
+        
 
     }
 
@@ -58,11 +62,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void AttackDmg()
-    {
-        print("did dmg");
-    }
-
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
@@ -74,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(context.performed)
         {
-            
             if(IsGrounded() || canDoubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -96,20 +94,28 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        foreach(Collider2D enemy in enemiesHit)
+        if (Time.time >= nextAttackTime)
         {
-            print("We hit " + enemy.name);
-        }
-
-        if(context.performed && IsGrounded())
-        {
-            animator.SetTrigger("isAttacking");
+            if (context.performed && IsGrounded())
+            {
+                animator.SetTrigger("isAttacking");
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
         if(context.canceled)
         {
             
+        }
+    }
+
+    public void AttackDmg()
+    {
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        
+        foreach (Collider2D enemy in enemiesHit)
+        {
+            enemy.GetComponent<Enemy>().TakeDmg(currentDmg);
+
         }
     }
 

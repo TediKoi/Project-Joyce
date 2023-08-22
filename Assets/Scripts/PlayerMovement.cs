@@ -13,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private int currentDmg = 1;
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
+    private float kbTimer;
+    private Vector2 kbDirection;
+    private Rigidbody2D enemyrb;
+    
+
+    
 
 
     [SerializeField]
@@ -29,15 +35,23 @@ public class PlayerMovement : MonoBehaviour
     private float attackRange = 0.5f;
     [SerializeField]
     private LayerMask enemyLayers;
+    [SerializeField]
+    private float kbForce;
+    [SerializeField]
+    private float kbDuration;
 
-
+    private void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
         
         Flip();
-        
+
+        ResetPlayerMovement();
 
     }
 
@@ -66,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = context.ReadValue<Vector2>().x;
         animator.SetInteger("isRunning", (int)horizontal);
+
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -108,12 +123,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void ResetPlayerMovement()
+    {
+        //once knockback timer is over, reset player movement. 
+        if (kbTimer > 0f)
+        {
+            kbTimer -= Time.deltaTime;
+            if (kbTimer <= 0f)
+            {
+                rb.velocity = Vector2.zero;
+            }
+        }
+    }
+
     public void AttackDmg()
     {
+        //check to see what enemies you hit and put it in a arraylist
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        
         
         foreach (Collider2D enemy in enemiesHit)
         {
+            kbDirection = (enemy.transform.position - transform.position).normalized;
+            print(kbDirection);
+            rb.velocity = Vector2.zero;
+            enemyrb = enemy.GetComponent<Rigidbody2D>();
+            enemyrb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);
+            kbTimer = kbDuration;
             enemy.GetComponent<Enemy>().TakeDmg(currentDmg);
 
         }

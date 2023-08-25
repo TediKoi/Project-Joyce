@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float kbTimer;
     private Vector2 kbDirection;
     private Rigidbody2D enemyrb;
+    private Vector2 mousePosition;
     
 
     
@@ -39,6 +40,12 @@ public class PlayerMovement : MonoBehaviour
     private float kbForce;
     [SerializeField]
     private float kbDuration;
+    [SerializeField]
+    private GameObject bullet;
+    [SerializeField]
+    private Transform bulletDir;
+
+
 
     private void Start()
     {
@@ -107,6 +114,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        GameObject bulletSpawn = Instantiate(bullet, bulletDir.position, bulletDir.rotation);
+        bulletSpawn.SetActive(true);
+    }
+
     public void Attack(InputAction.CallbackContext context)
     {
         if (Time.time >= nextAttackTime)
@@ -162,5 +175,13 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void Aiming(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        
     }
 }

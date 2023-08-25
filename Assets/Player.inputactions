@@ -24,13 +24,31 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "e709d4c1-09bb-4897-92e2-8d6bdb83fab6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Melee",
                     "type": "Button",
                     "id": "4eef2f4f-f3e5-454b-99d0-d584a5df6a6b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "3f16280b-b704-4a59-bd11-bade2881e547",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -125,11 +143,11 @@
                 {
                     "name": "",
                     "id": "25760033-ca51-42c2-ab10-4ebe352f0b21",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Melee",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -140,7 +158,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afc4c6fd-bdb8-46b9-98b3-44b8ad420f11",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00835358-1fa3-4b97-941c-f84938de10b8",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

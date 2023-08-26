@@ -14,10 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private float attackRate = 2f;
     private float nextAttackTime = 0f;
     private float kbTimer;
-    private Vector2 kbDirection;
+    public Vector2 kbDirection;
     private Rigidbody2D enemyrb;
     private Vector2 mousePosition;
-    
+    private bool canShoot = true;
 
     
 
@@ -44,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
     private GameObject bullet;
     [SerializeField]
     private Transform bulletDir;
+    [SerializeField]
+    private float fireRate;
+    [SerializeField]
+    private Camera mainCam;
+    [SerializeField]
+    private Transform aimer;
 
 
 
@@ -116,8 +122,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
+        if (!canShoot) return;
         GameObject bulletSpawn = Instantiate(bullet, bulletDir.position, bulletDir.rotation);
         bulletSpawn.SetActive(true);
+        StartCoroutine(FireRate());
+    }
+
+    IEnumerator FireRate()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -158,7 +173,6 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D enemy in enemiesHit)
         {
             kbDirection = (enemy.transform.position - transform.position).normalized;
-            print(kbDirection);
             rb.velocity = Vector2.zero;
             enemyrb = enemy.GetComponent<Rigidbody2D>();
             enemyrb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);
@@ -180,7 +194,11 @@ public class PlayerMovement : MonoBehaviour
     public void Aiming(InputAction.CallbackContext context)
     {
         mousePosition = context.ReadValue<Vector2>();
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector3 targetDirection = mouseWorldPosition - aimer.position;
+        float directionAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        aimer.rotation = Quaternion.Euler(new Vector3(0, 0, directionAngle + -90));
 
         
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class Bullet : MonoBehaviour
 {
@@ -24,7 +25,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        if(other.gameObject.tag != "Player" && other.gameObject.layer != 8)
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     private void OnEnable()

@@ -21,8 +21,8 @@ public class Enemy : MonoBehaviour
     public void TakeDmg(int dmg)
     {
         currentHealth -= dmg;
-
-        animator.SetTrigger("isEnemyHurt");
+        animator.SetTrigger("isHurt");
+        
 
         if(currentHealth <= 0)
         {
@@ -33,8 +33,6 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("enemy died");
-        animator.SetBool("isEnemyDead", true);
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        
     }
 }

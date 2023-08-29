@@ -173,8 +173,8 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D enemy in enemiesHit)
         {
             kbDirection = (enemy.transform.position - transform.position).normalized;
-            rb.velocity = Vector2.zero;
             enemyrb = enemy.GetComponent<Rigidbody2D>();
+            enemyrb.velocity = Vector2.zero;
             enemyrb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);
             kbTimer = kbDuration;
             enemy.GetComponent<Enemy>().TakeDmg(currentDmg);

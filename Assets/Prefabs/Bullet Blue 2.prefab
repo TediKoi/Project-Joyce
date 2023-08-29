@@ -175,7 +175,6 @@ MonoBehaviour:
   speed: 10
   bulletLifeTime: 10
   animator: {fileID: 2085137144736537732}
-  rb: {fileID: 2917125362145752365}
 --- !u!95 &2085137144736537732
 Animator:
   serializedVersion: 5

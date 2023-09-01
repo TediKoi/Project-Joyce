@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private enum State { Patrol, Attack };
+    private State state;
+    
+
+    [Header("Default")]
     [SerializeField]
     private int maxHealth = 100;
     [SerializeField]
@@ -12,12 +17,31 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private Transform player;
-    
 
-    private enum State { Patrol, Attack };
-    private State state;
 
-    
+    [Header("Attacking")]
+    [SerializeField]
+    private Transform attackPoint;
+    [SerializeField]
+    private float attackRange;
+    [SerializeField]
+    private LayerMask playerLayer;
+    [SerializeField]
+    private float kbForce;
+    [SerializeField]
+    private float kbDuration;
+    private float kbTimer;
+    [SerializeField]
+    private Vector2 kbDirection;
+    [SerializeField]
+    private Rigidbody2D playerRb;
+    [SerializeField]
+    private float currentDmg;
+
+
+
+
+
 
     [Header("Patrol")]
     [SerializeField]
@@ -103,6 +127,26 @@ public class Enemy : MonoBehaviour
             animator.SetBool("isAttacking", false);
             state = State.Patrol;
         }
+
+        
+    }
+
+    public void EnemyMeleeAttackAnimation()
+    {
+        //check to see what enemies you hit and put it in a arraylist
+        Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+
+        foreach (Collider2D player in playerHit)
+        {
+            kbDirection = (player.transform.position - transform.position).normalized;
+            playerRb = player.GetComponent<Rigidbody2D>();
+            playerRb.velocity = Vector2.zero;
+            playerRb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);
+            kbTimer = kbDuration;
+            player.GetComponent<PlayerMovement>().TakeDmg(currentDmg);
+
+        }
     }
 
     public void TakeDmg(int dmg)
@@ -123,5 +167,14 @@ public class Enemy : MonoBehaviour
         
     }
 
-    
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+
 }

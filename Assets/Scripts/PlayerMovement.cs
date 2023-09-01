@@ -51,11 +51,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform aimer;
 
+    [Header("Health")]
+    [SerializeField]
+    private float maxHealth = 5;
+    [SerializeField]
+    private float currentHealth = 0;
+    
+
 
 
     private void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -71,6 +78,21 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+
+    public void TakeDmg(float dmg)
+    {
+        currentHealth -= dmg;
+        if(currentHealth <= 0)
+        {
+            PlayerDead();
+        }
+    }
+
+    public void PlayerDead()
+    {
+        Debug.Log("Player Dead");
+
     }
 
     private bool IsGrounded()

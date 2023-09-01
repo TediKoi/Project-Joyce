@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 17608555}
   - component: {fileID: 17608554}
   - component: {fileID: 17608553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Joyce Model
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -573,6 +573,8 @@ MonoBehaviour:
   fireRate: 1
   mainCam: {fileID: 519420031}
   aimer: {fileID: 329810371}
+  maxHealth: 5
+  currentHealth: 0
 --- !u!1 &69811199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 258864954}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1756,7 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 329810371}
   - component: {fileID: 329810372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Aimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1831,6 +1833,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &343591748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343591749}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343591749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343591748}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.238, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738872653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360042303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,7 +2883,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 583148197}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AimDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3678,7 +3711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 822736889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6903,7 +6936,8 @@ Transform:
   m_LocalPosition: {x: 5.17, y: 0, z: 0}
   m_LocalScale: {x: 3.6, y: 3.6, z: 3.6}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 343591749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1738872656
@@ -6922,6 +6956,16 @@ MonoBehaviour:
   currentHealth: 0
   animator: {fileID: 1738872651}
   player: {fileID: 17608552}
+  attackPoint: {fileID: 343591749}
+  attackRange: 0.74
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  kbForce: 200
+  kbDuration: 1
+  kbDirection: {x: 0, y: 0}
+  playerRb: {fileID: 17608554}
+  currentDmg: 1
   patrolPoints:
   - {fileID: 890006034}
   - {fileID: 685495853}
@@ -6984,7 +7028,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 30
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4

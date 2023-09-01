@@ -3233,7 +3233,7 @@ Transform:
   m_GameObject: {fileID: 685495852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.57, y: -0.15, z: 0}
+  m_LocalPosition: {x: 2.57, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3858,7 +3858,7 @@ Transform:
   m_GameObject: {fileID: 890006033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.42, y: -0.22, z: 0}
+  m_LocalPosition: {x: 14.42, y: -0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6921,6 +6921,12 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   animator: {fileID: 1738872651}
+  player: {fileID: 17608552}
+  patrolPoints:
+  - {fileID: 890006034}
+  - {fileID: 685495853}
+  speed: 5
+  patrolDestination: 0
 --- !u!61 &1738872657
 BoxCollider2D:
   m_ObjectHideFlags: 0

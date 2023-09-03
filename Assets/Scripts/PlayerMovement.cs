@@ -83,6 +83,8 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDmg(float dmg)
     {
         currentHealth -= dmg;
+        animator.SetTrigger("isHurt");
+
         if(currentHealth <= 0)
         {
             PlayerDead();
@@ -92,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     public void PlayerDead()
     {
         Debug.Log("Player Dead");
-
+        animator.SetTrigger("isDead");
     }
 
     private bool IsGrounded()
@@ -195,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (Collider2D enemy in enemiesHit)
         {
             kbDirection = (enemy.transform.position - transform.position).normalized;
+            kbDirection.y = 1f;
             enemyrb = enemy.GetComponent<Rigidbody2D>();
             enemyrb.velocity = Vector2.zero;
             enemyrb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);

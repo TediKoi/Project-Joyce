@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private Transform player;
+    [SerializeField]
+    private Rigidbody2D rb;
 
 
     [Header("Attacking")]
@@ -50,6 +52,7 @@ public class Enemy : MonoBehaviour
     private float speed;
     [SerializeField]
     private int patrolDestination;
+    private int faceDirection;
 
 
     // Start is called before the first frame update
@@ -72,7 +75,8 @@ public class Enemy : MonoBehaviour
             
         }
         
-        
+
+
     }
 
     private void Patrol()
@@ -81,6 +85,7 @@ public class Enemy : MonoBehaviour
         {
             if (patrolDestination == 0)
             {
+                faceDirection = patrolDestination;
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
                 animator.SetBool("isWalking", true);
                 //check if he reached destination, then goes to other destination
@@ -98,6 +103,7 @@ public class Enemy : MonoBehaviour
             }
             if (patrolDestination == 1)
             {
+                faceDirection = patrolDestination;
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
                 animator.SetBool("isWalking", true);
                 //check if he reached destination, then goes to other destination
@@ -140,6 +146,7 @@ public class Enemy : MonoBehaviour
         foreach (Collider2D player in playerHit)
         {
             kbDirection = (player.transform.position - transform.position).normalized;
+            kbDirection.y = 1;
             playerRb = player.GetComponent<Rigidbody2D>();
             playerRb.velocity = Vector2.zero;
             playerRb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);
@@ -148,6 +155,8 @@ public class Enemy : MonoBehaviour
 
         }
     }
+
+    
 
     public void TakeDmg(int dmg)
     {

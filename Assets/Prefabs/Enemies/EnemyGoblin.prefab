@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4192537754133526267}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.42, y: -0.31, z: 0}
+  m_LocalPosition: {x: 12.03, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 8587874330389667587}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.57, y: -0.32, z: 0}
+  m_LocalPosition: {x: -0.04, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 9206412375679372229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.17, y: 0, z: 0}
+  m_LocalPosition: {x: 5.72, y: -0.31, z: 0}
   m_LocalScale: {x: 3.6, y: 3.6, z: 3.6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -253,13 +253,14 @@ MonoBehaviour:
   currentHealth: 0
   animator: {fileID: 1434313935414450045}
   player: {fileID: 0}
+  rb: {fileID: 1731027935816125054}
   attackPoint: {fileID: 4321744603101768111}
-  attackRange: 0.74
+  attackRange: 0.89
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  kbForce: 200
-  kbDuration: 1
+  kbForce: 300
+  kbDuration: 2
   kbDirection: {x: 0, y: 0}
   playerRb: {fileID: 0}
   currentDmg: 1
@@ -327,7 +328,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.045130804, y: 0.009026259}
+  m_Offset: {x: -0.045130804, y: 0.002750069}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -338,5 +339,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30799443, y: 0.3802035}
+  m_Size: {x: 0.30799443, y: 0.39275587}
   m_EdgeRadius: 0

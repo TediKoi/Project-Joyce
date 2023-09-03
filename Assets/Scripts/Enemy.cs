@@ -185,5 +185,7 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
+    
+
 
 }

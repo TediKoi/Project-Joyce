@@ -62,7 +62,7 @@ public class NPC : MonoBehaviour
         
     }
 
-    public void ResetText()
+    public void ResetText() //this gets rid of the dialogue text and panel
     {
         dialogueText.text = "";
         index = 0;
@@ -71,13 +71,13 @@ public class NPC : MonoBehaviour
         StartCoroutine(PanelOff());
     }
 
-    IEnumerator PanelOff()
+    IEnumerator PanelOff() //this is to turn off the panel after a short period of time
     {
         yield return new WaitForSeconds(1);
         dialoguePanel.SetActive(false);
     }
 
-    IEnumerator Typing()
+    IEnumerator Typing() //this does the typing animation for the dialogue text
     {
         foreach(char letter in dialogue[index].ToCharArray())
         {
@@ -90,13 +90,51 @@ public class NPC : MonoBehaviour
         
     }
 
-    public void NextLine()
+    public void NextLine() //this gets the next line of the dialogue
     {
         continueButton.SetActive(false);
         choice1Button.SetActive(false);
         choice2Button.SetActive(false);
 
         if(index < dialogue.Count - 1) 
+        {
+            index++;
+            dialogueText.text = "";
+            StartCoroutine(Typing());
+        }
+        else
+        {
+            ResetText();
+        }
+    }
+
+    public void Choice1()
+    {
+        choice1Button.SetActive(false);
+        choice2Button.SetActive(false);
+
+        dialogue.Add("Uber was late? Damn, you need to get a car ASAP. Anyways, let's go, everyone is waiting for us. ");
+
+        if(index < dialogue.Count - 1)
+        {
+            index++;
+            dialogueText.text = "";
+            StartCoroutine(Typing());
+        }
+        else
+        {
+            ResetText();
+        }
+    }
+
+    public void Choice2()
+    {
+        choice1Button.SetActive(false);
+        choice2Button.SetActive(false);
+
+        dialogue.Add("Wow.. If you didn't get paid overtime, I would quit. Anyways, let's go, everyone is waiting for us. ");
+
+        if (index < dialogue.Count - 1)
         {
             index++;
             dialogueText.text = "";
@@ -125,7 +163,7 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void Choice()
+    public void Choice() //this determines whether the buttons should be a continue button or choice buttons
     {
         if (index == 1 && dialogueText.text == dialogue[index])
         {
@@ -143,11 +181,11 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void Dialogue()
+    public void Dialogue() //this is the beginning dialogue script before any choices are made
     {
         dialogue.Add("Hey Joyce!"); //0
         dialogue.Add("We were all waiting for you! What took you so long?"); //1
-        dialogue.Add("Ohh.. Well everyones waiting for you at the entrance. See you there!");//2
+        
 
     }
     

@@ -259,9 +259,11 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  kbForce: 300
+  kbForce: 200
   kbDuration: 2
   kbDirection: {x: 0, y: 0}
+  force: {x: 0, y: 0}
+  upwardForce: 1
   playerRb: {fileID: 0}
   currentDmg: 1
   patrolPoints:

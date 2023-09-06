@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class NPC : MonoBehaviour
+public class CherryNPC : MonoBehaviour
 {
     [SerializeField]
     private GameObject dialoguePanel;
@@ -57,11 +57,11 @@ public class NPC : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if(playerClose)
+        if (playerClose)
         {
             if (context.performed)
             {
-                if(dialoguePanel.activeInHierarchy)
+                if (dialoguePanel.activeInHierarchy)
                 {
                     ResetText();
                 }
@@ -72,13 +72,13 @@ public class NPC : MonoBehaviour
                     profileName.text = myName;
                     dialoguePanel.SetActive(true);
                     animator.SetBool("isOpen", true);
-                    
+
                     StartCoroutine(Typing());
                 }
-                
+
             }
         }
-        
+
     }
 
     public void ResetText() //this gets rid of the dialogue text and panel
@@ -98,15 +98,15 @@ public class NPC : MonoBehaviour
 
     IEnumerator Typing() //this does the typing animation for the dialogue text
     {
-        foreach(char letter in dialogue[index].ToCharArray())
+        foreach (char letter in dialogue[index].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
 
             Choice();
-            
+
         }
-        
+
     }
 
     public void NextLine() //this gets the next line of the dialogue
@@ -115,7 +115,7 @@ public class NPC : MonoBehaviour
         choice1Button.SetActive(false);
         choice2Button.SetActive(false);
 
-        if(index < dialogue.Count - 1) 
+        if (index < dialogue.Count - 1)
         {
             index++;
             dialogueText.text = "";
@@ -134,7 +134,7 @@ public class NPC : MonoBehaviour
 
         dialogue.Add("Uber was late? Damn, you need to get a car ASAP. Anyways, let's go, everyone is waiting for us. ");
 
-        if(index < dialogue.Count - 1)
+        if (index < dialogue.Count - 1)
         {
             index++;
             dialogueText.text = "";
@@ -167,7 +167,7 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             playerClose = true;
         }
@@ -189,7 +189,7 @@ public class NPC : MonoBehaviour
             choice1Button.SetActive(true);
             choice2Button.SetActive(true);
 
-            
+
         }
         else
         {
@@ -204,8 +204,8 @@ public class NPC : MonoBehaviour
     {
         dialogue.Add("Hey Joyce!"); //0
         dialogue.Add("We were all waiting for you! What took you so long?"); //1
-        
+
 
     }
-    
+
 }

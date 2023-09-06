@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
 {
@@ -35,6 +39,10 @@ public class Enemy : MonoBehaviour
     private float kbTimer;
     [SerializeField]
     private Vector2 kbDirection;
+    [SerializeField]
+    private Vector2 force;
+    [SerializeField]
+    private float upwardForce;
     [SerializeField]
     private Rigidbody2D playerRb;
     [SerializeField]
@@ -136,7 +144,7 @@ public class Enemy : MonoBehaviour
 
         
     }
-
+    
     public void EnemyMeleeAttackAnimation()
     {
         //check to see what enemies you hit and put it in a arraylist
@@ -145,16 +153,16 @@ public class Enemy : MonoBehaviour
 
         foreach (Collider2D player in playerHit)
         {
-            kbDirection = (player.transform.position - transform.position).normalized;
-            kbDirection.y = 1;
+            kbDirection = (player.transform.position - transform.position);
+            force = kbDirection * kbForce + Vector2.up * upwardForce;
             playerRb = player.GetComponent<Rigidbody2D>();
             playerRb.velocity = Vector2.zero;
-            playerRb.AddForce(kbDirection * kbForce, ForceMode2D.Impulse);
+            playerRb.AddForce(force, ForceMode2D.Impulse);
             kbTimer = kbDuration;
-            player.GetComponent<PlayerMovement>().TakeDmg(currentDmg);
-
+            player.GetComponent<PlayerHealth>().TakeDmg(currentDmg);
         }
     }
+   
 
     
 

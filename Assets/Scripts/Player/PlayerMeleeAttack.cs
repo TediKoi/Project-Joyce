@@ -72,6 +72,10 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
         if (Time.time >= nextAttackTime)
         {
             if (context.performed && playerMovement.IsGrounded())

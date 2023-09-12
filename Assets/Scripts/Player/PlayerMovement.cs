@@ -65,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if(DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
         horizontal = context.ReadValue<Vector2>().x;
         animator.SetInteger("isRunning", (int)horizontal);
 

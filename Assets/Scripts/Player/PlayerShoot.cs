@@ -29,6 +29,10 @@ public class PlayerShoot : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
         if (!canShoot) return;
         GameObject bulletSpawn = Instantiate(bullet, bulletDir.position, bulletDir.rotation);
         bulletSpawn.SetActive(true);

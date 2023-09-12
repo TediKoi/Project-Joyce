@@ -24,12 +24,12 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if(isPlayerClose == true)
+        if(isPlayerClose && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
             if(playerInteract.isInteracting == true)
             {
-                print(inkJSON.text);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }
         else

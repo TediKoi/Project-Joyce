@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -15,6 +17,14 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField]
     private TextAsset inkJSON;
 
+    [Header("Dialogue Panel")]
+    [SerializeField] private Image panel;
+    [SerializeField] private Image panelProfileImage;
+    [SerializeField] private TextMeshProUGUI panelProfileName;
+    [SerializeField] private Sprite profileImage;
+    [SerializeField] private Color panelColor;
+    [SerializeField] private string profileName;
+
     private void Awake()
     {
         isPlayerClose = false;
@@ -26,6 +36,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(isPlayerClose && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            panel.color = panelColor;
+            panelProfileImage.sprite = profileImage;
+            panelProfileName.text = profileName;
             visualCue.SetActive(true);
             if(playerInteract.isInteracting == true)
             {
@@ -43,6 +56,7 @@ public class DialogueTrigger : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             isPlayerClose = true;
+
         }
     }
 

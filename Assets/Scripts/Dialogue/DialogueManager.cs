@@ -13,6 +13,9 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI dialogueText;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private GameObject continueButton;
+    
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -68,6 +71,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         
         animator.SetBool("isOpen", true);
+        continueButton.SetActive(true);
 
         ContinueStory();
     }
@@ -86,6 +90,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
+            continueButton.SetActive(true);
             //set text for the current dialogue line
             dialogueText.text = currentStory.Continue();
             //display the choices when available
@@ -116,9 +121,11 @@ public class DialogueManager : MonoBehaviour
         }
 
         int index = 0;
+        
         //enable and start the choices up to the amount of choices for this line of dialogue
         foreach(Choice choice in currentChoices)
         {
+            continueButton.SetActive(false);
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
             index++;

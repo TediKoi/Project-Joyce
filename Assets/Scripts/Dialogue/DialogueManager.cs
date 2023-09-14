@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private Animator animator;
     [SerializeField]
+    private Animator choiceAnimator;
+    [SerializeField]
     private GameObject continueButton;
     
 
@@ -107,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         
         yield return new WaitForSecondsRealtime(0.5f);
         animator.SetTrigger("isIdle");
+        choiceAnimator.SetTrigger("isChoiceIdle");
 
     }
 
@@ -126,6 +129,8 @@ public class DialogueManager : MonoBehaviour
         foreach(Choice choice in currentChoices)
         {
             continueButton.SetActive(false);
+            animator.SetBool("isMakingChoice", true);
+            choiceAnimator.SetBool("isChoiceOpen", true);
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
             index++;
@@ -140,6 +145,9 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+        animator.SetBool("isMakingChoice", false);
+        choiceAnimator.SetBool("isChoiceOpen", false);
+        StartCoroutine(DialogueIdle());
         ContinueStory();
     }
 }

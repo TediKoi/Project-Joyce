@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int maxHealth = 100;
     [SerializeField]
-    private int currentHealth;
+    public int currentHealth;
     [SerializeField]
     private Animator animator;
     [SerializeField]

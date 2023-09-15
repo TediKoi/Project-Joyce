@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth = 5;
     [SerializeField]
     private float currentHealth = 0;
-
+    [SerializeField]
     private PlayerMovement playerMovement;
 
     // Start is called before the first frame update

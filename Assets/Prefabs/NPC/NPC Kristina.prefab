@@ -183,6 +183,12 @@ MonoBehaviour:
   visualCue: {fileID: 800013660812376983}
   playerInteract: {fileID: 0}
   inkJSON: {fileID: 4900000, guid: 0a34b0fa9e382db4981672b7d8db9c63, type: 3}
+  panel: {fileID: 0}
+  panelProfileImage: {fileID: 0}
+  panelProfileName: {fileID: 0}
+  profileImage: {fileID: 451691651, guid: 6b0bf69edecb7424e8d5098878fea10e, type: 3}
+  panelColor: {r: 1, g: 0.5613208, b: 0.8828372, a: 1}
+  profileName: Kristina
 --- !u!1 &800013660812376983
 GameObject:
   m_ObjectHideFlags: 0

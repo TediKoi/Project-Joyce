@@ -183,6 +183,12 @@ MonoBehaviour:
   visualCue: {fileID: 8050516906136640288}
   playerInteract: {fileID: 0}
   inkJSON: {fileID: 4900000, guid: 478aec1f2c1e790498ea13717c7d395a, type: 3}
+  panel: {fileID: 0}
+  panelProfileImage: {fileID: 0}
+  panelProfileName: {fileID: 0}
+  profileImage: {fileID: 660176301, guid: e5bf51b7a594bda48a24d91bc120da6e, type: 3}
+  panelColor: {r: 0.6698113, g: 0, b: 0, a: 1}
+  profileName: Cherry
 --- !u!1 &8050516906136640288
 GameObject:
   m_ObjectHideFlags: 0

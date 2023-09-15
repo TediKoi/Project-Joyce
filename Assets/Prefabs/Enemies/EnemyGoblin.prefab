@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2511082901514971069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GoblinPoint0
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2153904392118722095}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GoblinPoint1
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929202178163919717}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

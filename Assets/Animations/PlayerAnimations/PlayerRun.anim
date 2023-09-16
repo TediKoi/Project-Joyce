@@ -22,19 +22,19 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -126272322, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
-    - time: 0.15
+    - time: 0.16666667
       value: {fileID: -204824909, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
-    - time: 0.28333333
+    - time: 0.33333334
       value: {fileID: -960367311, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
-    - time: 0.43333334
+    - time: 0.5
       value: {fileID: 1847132, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
-    - time: 0.56666666
+    - time: 0.6666667
       value: {fileID: -1187800357, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
-    - time: 0.71666664
+    - time: 0.8333333
       value: {fileID: 689863506, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
-    - time: 0.85
-      value: {fileID: -1499914970, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
     - time: 1
+      value: {fileID: -1499914970, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
+    - time: 1.1666666
       value: {fileID: -690965106, guid: e6e36bd20587f3c4c901399f4b5855b9, type: 3}
     attribute: m_Sprite
     path: 
@@ -71,7 +71,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0166667
+    m_StopTime: 1.1833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -90,4 +90,60 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8333333
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: MoveSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

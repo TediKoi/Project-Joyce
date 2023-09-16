@@ -48,6 +48,16 @@ public class PlayerMovement : MonoBehaviour
     {
         //this moves the player, horizontal is calculated from Move()
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
+        //plays footsteps audio when moving
+        if ((horizontal == 1f || horizontal == -1f) && IsGrounded())
+        {
+            AudioManager.GetInstance().FootstepsOn();
+        }
+        else
+        {
+            AudioManager.GetInstance().FootstepsOff();
+        }
     }
 
     public bool IsGrounded()
@@ -77,10 +87,7 @@ public class PlayerMovement : MonoBehaviour
         
         horizontal = context.ReadValue<Vector2>().x;
         animator.SetInteger("isRunning", (int)horizontal);
-        while(horizontal == 1f || horizontal == -1f)
-        {
-            StartCoroutine(MoveAudio());
-        }
+        
         
 
     }
@@ -123,11 +130,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator MoveAudio()
-    {
-        AudioManager.GetInstance().PlaySFX(0);
-        yield return new WaitForSeconds(0.2f);
-    }
+    
 
     
 

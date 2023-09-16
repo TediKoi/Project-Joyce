@@ -14,12 +14,14 @@ public class AudioManager : MonoBehaviour
     private AudioSource BGMSource;
     [SerializeField]
     private AudioSource SFXSource;
+    [SerializeField]
+    private AudioSource footstepsSource;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
-        
+        footstepsSource.enabled = false;
         BGMSource.clip = BGMclip[0];
         BGMSource.Play();
     }
@@ -33,6 +35,16 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.clip = SFXclip[index];
         SFXSource.Play();
+    }
+
+    public void FootstepsOn()
+    {
+        footstepsSource.enabled = true;
+    }
+
+    public void FootstepsOff()
+    {
+        footstepsSource.enabled = false;
     }
 
 

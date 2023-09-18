@@ -34,6 +34,7 @@ public class PlayerShoot : MonoBehaviour
             return;
         }
         if (!canShoot) return;
+        AudioManager.GetInstance().ShootingSFX(3);
         GameObject bulletSpawn = Instantiate(bullet, bulletDir.position, bulletDir.rotation);
         bulletSpawn.SetActive(true);
         StartCoroutine(FireRate());

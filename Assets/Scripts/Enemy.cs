@@ -171,6 +171,7 @@ public class Enemy : MonoBehaviour
         
         currentHealth -= dmg;
         animator.SetTrigger("isHurt");
+        AudioManager.GetInstance().GoblinSFX(5);
         if(currentHealth <= 0)
         {
             Die();
@@ -181,6 +182,7 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("enemy died");
         animator.SetTrigger("isDead");
+        AudioManager.GetInstance().GoblinSFX(6);
         
     }
 

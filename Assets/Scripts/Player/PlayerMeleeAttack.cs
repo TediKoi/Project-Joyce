@@ -80,6 +80,7 @@ public class PlayerMeleeAttack : MonoBehaviour
         {
             if (context.performed && playerMovement.IsGrounded())
             {
+                AudioManager.GetInstance().MeleeSFX(4);
                 playerMovement.animator.SetTrigger("isAttacking");
                 nextAttackTime = Time.time + 1f / attackRate;
             }

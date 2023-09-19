@@ -18,6 +18,10 @@ public class AudioManager : MonoBehaviour
     private AudioSource footstepsSource;
     [SerializeField]
     private AudioSource shootSound;
+    [SerializeField]
+    private AudioSource meleeSource;
+    [SerializeField]
+    private AudioSource goblinSource;
 
     // Start is called before the first frame update
     void Awake()
@@ -55,5 +59,16 @@ public class AudioManager : MonoBehaviour
         shootSound.Play();
     }
 
+    public void MeleeSFX(int index)
+    {
+        meleeSource.clip = SFXclip[index];
+        meleeSource.Play();
+    }
+
+    public void GoblinSFX(int index)
+    {
+        goblinSource.clip = SFXclip[index];
+        goblinSource.Play();
+    }
 
 }

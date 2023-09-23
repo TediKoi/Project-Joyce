@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject optionsPanel;
+    public GameObject mainmenuPanel;
+
+    public AudioMixer audioMixer;
 
     private static UIManager instance;
 
@@ -39,6 +43,14 @@ public class UIManager : MonoBehaviour
 
     public void Options()
     {
-
+        mainmenuPanel.SetActive(false);
+        pausePanel.SetActive(false);
+        optionsPanel.SetActive(true);
     }
+
+    public void SetMasterVolume(float volume)
+    {
+        audioMixer.SetFloat("masterVolume", volume);
+    }
+    
 }

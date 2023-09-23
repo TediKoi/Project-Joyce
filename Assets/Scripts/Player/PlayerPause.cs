@@ -23,8 +23,17 @@ public class PlayerPause : MonoBehaviour
     {
         if(context.performed)
         {
-            GameManager.GetInstance().isPaused = true;
-            UIManager.GetInstance().PauseMenu();
+            if(GameManager.GetInstance().isPaused == true)
+            {
+                GameManager.GetInstance().isPaused = false;
+                UIManager.GetInstance().ResumeGame();
+            }
+            else
+            {
+                GameManager.GetInstance().isPaused = true;
+                UIManager.GetInstance().PauseMenu();
+            }
+            
         }
     }
 }

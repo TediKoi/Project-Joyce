@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     private float horizontal;
     private float speed = 8f;
@@ -128,6 +128,16 @@ public class PlayerMovement : MonoBehaviour
                 wasJumping = false;
             }
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPos;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.playerPos = this.transform.position;
     }
 
     

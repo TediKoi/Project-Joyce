@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public bool youWin;
     public bool isPaused;
 
+    public int currentLevel;
+    public int currentHealth;
+    public PlayerMovement player;
+
     private static GameManager instance;
 
     // Start is called before the first frame update
@@ -38,4 +42,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+    
 }

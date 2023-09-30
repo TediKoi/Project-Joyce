@@ -5,24 +5,30 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject optionsPanel;
     public GameObject mainmenuPanel;
+    public GameObject savePanel;
     public TMP_Dropdown resolutionDropdown;
+    
 
     public AudioMixer audioMixer;
+    
 
     private static UIManager instance;
     private Resolution[] resolutions;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         resolutions = Screen.resolutions;
+        
         SetResolutionsForDropDown();
         
     }
@@ -43,6 +49,7 @@ public class UIManager : MonoBehaviour
     {
         optionsPanel.SetActive(false);
         mainmenuPanel.SetActive(false);
+        savePanel.SetActive(false);
         pausePanel.SetActive(true);
     }
 
@@ -56,6 +63,7 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(false);
         optionsPanel.SetActive(false);
         mainmenuPanel.SetActive(false);
+        savePanel.SetActive(false);
         GameManager.GetInstance().isPaused = false;
     }
 
@@ -63,6 +71,7 @@ public class UIManager : MonoBehaviour
     {
         mainmenuPanel.SetActive(false);
         pausePanel.SetActive(false);
+        savePanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
@@ -109,6 +118,8 @@ public class UIManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
+    
+
     // ----------------------------------------------------- MAIN MENU -----------------------------------------
 
     public void Mainmenu()
@@ -132,5 +143,13 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    // ------------------------------------------------------ SAVE MENU -------------------------------------------
+
+    public void SaveMenu()
+    {
+        savePanel.SetActive(true);
+        GameManager.GetInstance().isPaused = true;
     }
 }

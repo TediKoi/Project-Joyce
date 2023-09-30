@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDataPersistence
 {
     [Header("Health")]
     [SerializeField]
-    private float maxHealth = 5;
-    [SerializeField]
-    private float currentHealth = 0;
+    public int currentHealth = 0;
     [SerializeField]
     private PlayerMovement playerMovement;
+
+    private static PlayerHealth instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        instance = this;
     }
 
     // Update is called once per frame
@@ -24,7 +24,12 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    public void TakeDmg(float dmg)
+    public static PlayerHealth GetInstance()
+    {
+        return instance;
+    }
+
+    public void TakeDmg(int dmg)
     {
         currentHealth -= dmg;
         playerMovement.animator.SetTrigger("isHurt");
@@ -39,5 +44,15 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player Dead");
         playerMovement.animator.SetTrigger("isDead");
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentHealth = data.health;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.health = this.currentHealth;
     }
 }

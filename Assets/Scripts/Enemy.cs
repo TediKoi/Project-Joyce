@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Rigidbody2D playerRb;
     [SerializeField]
-    private float currentDmg;
+    private int currentDmg;
 
 
 

@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     public GameObject mainmenuPanel;
     public GameObject savePanel;
     public TMP_Dropdown resolutionDropdown;
+    public TMP_Text coinText;
+    public TMP_Text crystalText;
     
 
     public AudioMixer audioMixer;
@@ -151,5 +153,17 @@ public class UIManager : MonoBehaviour
     {
         savePanel.SetActive(true);
         GameManager.GetInstance().isPaused = true;
+    }
+
+    // ----------------------------------------------------- HUD ----------------------------------------------------
+
+    public void UpdateCoins(int coinAmount)
+    {
+        coinText.text = coinAmount.ToString();
+    }
+
+    public void UpdateCrystals(int crystalAmount)
+    {
+        crystalText.text = crystalAmount.ToString();
     }
 }

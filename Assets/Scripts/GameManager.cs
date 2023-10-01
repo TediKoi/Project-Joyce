@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public int currentLevel;
     public int currentHealth;
+    public int coinCount;
+    public int crystalCount;
     public PlayerMovement player;
 
     private static GameManager instance;

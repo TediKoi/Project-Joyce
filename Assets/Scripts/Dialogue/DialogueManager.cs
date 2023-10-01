@@ -85,6 +85,7 @@ public class DialogueManager : MonoBehaviour
 
         StartCoroutine(DialogueIdle());
         
+
         dialogueText.text = "";
     }
 
@@ -107,9 +108,10 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator DialogueIdle()
     {
         
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(2f);
         animator.SetTrigger("isIdle");
         choiceAnimator.SetTrigger("isChoiceIdle");
+
 
     }
 

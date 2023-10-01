@@ -404,6 +404,7 @@ MonoBehaviour:
   pausePanel: {fileID: 0}
   optionsPanel: {fileID: 7530839459230178592}
   mainmenuPanel: {fileID: 376178568}
+  savePanel: {fileID: 0}
   resolutionDropdown: {fileID: 2953894258693979810}
   audioMixer: {fileID: 24100000, guid: 4630fe515436cca4a9fcddff1ed76ce1, type: 2}
 --- !u!4 &456287131
@@ -1218,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4864160287701255647, guid: d112fbac54de8e740ba0f983d2f7b247, type: 3}
+      propertyPath: BGMclip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c9f8fc809371224caeb2f481dd06cc0, type: 3}
     - target: {fileID: 6843066384790216363, guid: d112fbac54de8e740ba0f983d2f7b247, type: 3}
       propertyPath: m_Name
       value: Audio Manager

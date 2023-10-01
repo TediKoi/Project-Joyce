@@ -14,8 +14,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Default")]
     [SerializeField]
-    private int maxHealth = 100;
-    [SerializeField]
     public int currentHealth;
     [SerializeField]
     private Animator animator;
@@ -49,10 +47,6 @@ public class Enemy : MonoBehaviour
     private int currentDmg;
 
 
-
-
-
-
     [Header("Patrol")]
     [SerializeField]
     private Transform[] patrolPoints;
@@ -60,13 +54,14 @@ public class Enemy : MonoBehaviour
     private float speed;
     [SerializeField]
     private int patrolDestination;
-    private int faceDirection;
+    [SerializeField]
+    private bool tookDmg;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        
         state = State.Patrol;
     }
 
@@ -81,19 +76,18 @@ public class Enemy : MonoBehaviour
                 EnemyAttack();
                 break;
             
+            
         }
-        
-
 
     }
 
     private void Patrol()
     {
-        if(currentHealth > 0)
+        
+        if(currentHealth > 0 && !tookDmg)
         {
             if (patrolDestination == 0)
             {
-                faceDirection = patrolDestination;
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
                 animator.SetBool("isWalking", true);
                 //check if he reached destination, then goes to other destination
@@ -108,10 +102,10 @@ public class Enemy : MonoBehaviour
                     animator.SetBool("isWalking", false);
                     state = State.Attack;
                 }
+                
             }
             if (patrolDestination == 1)
             {
-                faceDirection = patrolDestination;
                 transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
                 animator.SetBool("isWalking", true);
                 //check if he reached destination, then goes to other destination
@@ -126,6 +120,7 @@ public class Enemy : MonoBehaviour
                     animator.SetBool("isWalking", false);
                     state = State.Attack;
                 }
+                
             }
         }
 
@@ -141,9 +136,9 @@ public class Enemy : MonoBehaviour
             animator.SetBool("isAttacking", false);
             state = State.Patrol;
         }
-
         
     }
+
     
     public void EnemyMeleeAttackAnimation()
     {
@@ -168,7 +163,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDmg(int dmg)
     {
-        
+        tookDmg = true;
         currentHealth -= dmg;
         animator.SetTrigger("isHurt");
         AudioManager.GetInstance().GoblinSFX(5);
@@ -176,6 +171,13 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        StartCoroutine(TookDmg());
+    }
+
+    IEnumerator TookDmg()
+    {
+        yield return new WaitForSeconds(0.3f);
+        tookDmg = false;
     }
 
     void Die()

@@ -34197,6 +34197,38 @@ PrefabInstance:
       propertyPath: resolutionDropdown
       value: 
       objectReference: {fileID: 1213729037}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 1898159544}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 2086666374}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 555729384}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1898159542}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2086666372}
+    - target: {fileID: 7409605345269412298, guid: 9c74b5c89a871ea47924af1586226deb, type: 3}
+      propertyPath: healthObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 555729382}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

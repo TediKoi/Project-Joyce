@@ -16,8 +16,8 @@ public class UIManager : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public TMP_Text coinText;
     public TMP_Text crystalText;
-    
-
+    public Image[] healthArray;
+ 
     public AudioMixer audioMixer;
     
 
@@ -165,5 +165,20 @@ public class UIManager : MonoBehaviour
     public void UpdateCrystals(int crystalAmount)
     {
         crystalText.text = crystalAmount.ToString();
+    }
+
+    public void UpdateHealth(int healthAmount)
+    {
+        for(int i = 0; i < healthArray.Length; i++)
+        {
+            if(i < healthAmount)
+            {
+                healthArray[i].enabled = true;
+            }
+            else
+            {
+                healthArray[i].enabled = false;
+            }
+        }
     }
 }

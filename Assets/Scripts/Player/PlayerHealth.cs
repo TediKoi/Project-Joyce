@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        
+        UIManager.GetInstance().UpdateHealth(currentHealth);
     }
 
     public static PlayerHealth GetInstance()
@@ -31,13 +31,14 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
 
     public void TakeDmg(int dmg)
     {
+        
         currentHealth -= dmg;
         playerMovement.animator.SetTrigger("isHurt");
-
         if (currentHealth <= 0)
         {
             PlayerDead();
         }
+        
     }
 
     public void PlayerDead()

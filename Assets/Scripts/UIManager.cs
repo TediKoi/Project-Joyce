@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IDataPersistence
 {
     public GameObject pausePanel;
     public GameObject optionsPanel;
@@ -44,6 +44,29 @@ public class UIManager : MonoBehaviour
     public static UIManager GetInstance()
     {
         return instance;
+    }
+
+    public void LoadData(GameData data)
+    {
+        foreach(KeyValuePair<string, bool> pair in data.coinsCollected)
+        {
+            if(pair.Value)
+            {
+                GameManager.GetInstance().coinCount++;
+            }
+        }
+        foreach (KeyValuePair<string, bool> pair in data.crystalsCollected)
+        {
+            if (pair.Value)
+            {
+                GameManager.GetInstance().crystalCount++;
+            }
+        }
+    }
+
+    public void SaveData(GameData data)
+    {
+        // nothing needs to be saved
     }
 
     // ------------------------------------------------------------------ PAUSE MENU ----------------------------------------

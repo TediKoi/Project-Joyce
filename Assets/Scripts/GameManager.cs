@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Pause();
+        UpdateCoinsText();
+        UpdateCrystalsText();
     }
 
     public static GameManager GetInstance()
@@ -43,6 +45,16 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void UpdateCoinsText()
+    {
+        UIManager.GetInstance().UpdateCoins(coinCount);
+    }
+
+    public void UpdateCrystalsText()
+    {
+        UIManager.GetInstance().UpdateCrystals(crystalCount);
     }
 
     

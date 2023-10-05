@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource meleeSource;
     [SerializeField]
     private AudioSource goblinSource;
+    [SerializeField]
+    private AudioSource pickupSource;
 
     // Start is called before the first frame update
     void Awake()
@@ -69,6 +71,12 @@ public class AudioManager : MonoBehaviour
     {
         goblinSource.clip = SFXclip[index];
         goblinSource.Play();
+    }
+
+    public void PickupSFX(int index)
+    {
+        pickupSource.clip = SFXclip[index];
+        pickupSource.Play();
     }
 
 }

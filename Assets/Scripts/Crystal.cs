@@ -38,6 +38,7 @@ public class Crystal : MonoBehaviour, IDataPersistence
             collected = true;
             GameManager.GetInstance().crystalCount++;
             UIManager.GetInstance().UpdateCrystals(GameManager.GetInstance().crystalCount);
+            AudioManager.GetInstance().PlaySFX(10);
             this.gameObject.SetActive(false);
         }
     }

@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         
         currentHealth -= dmg;
         playerMovement.animator.SetTrigger("isHurt");
+        AudioManager.GetInstance().PlaySFX(7);
         if (currentHealth <= 0)
         {
             PlayerDead();
@@ -44,6 +45,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     public void PlayerDead()
     {
         Debug.Log("Player Dead");
+        AudioManager.GetInstance().PlaySFX(8);
         playerMovement.animator.SetTrigger("isDead");
     }
 

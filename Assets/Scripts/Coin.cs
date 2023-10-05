@@ -39,6 +39,7 @@ public class Coin : MonoBehaviour, IDataPersistence
             collected = true;
             GameManager.GetInstance().coinCount++;
             UIManager.GetInstance().UpdateCoins(GameManager.GetInstance().coinCount);
+            AudioManager.GetInstance().PlaySFX(9);
             this.gameObject.SetActive(false);
         }
     }

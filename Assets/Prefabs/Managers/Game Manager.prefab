@@ -47,3 +47,8 @@ MonoBehaviour:
   gameOver: 0
   youWin: 0
   isPaused: 0
+  currentLevel: 1
+  currentHealth: 0
+  coinCount: 0
+  crystalCount: 0
+  player: {fileID: 0}

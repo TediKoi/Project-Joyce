@@ -249,8 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b0bd9f2316c3947838fe37ecd0fe61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 0
+  currentHealth: 3
   animator: {fileID: 1434313935414450045}
   player: {fileID: 0}
   rb: {fileID: 1731027935816125054}
@@ -271,6 +270,7 @@ MonoBehaviour:
   - {fileID: 2153904392118722095}
   speed: 5
   patrolDestination: 0
+  tookDmg: 0
 --- !u!50 &1731027935816125054
 Rigidbody2D:
   serializedVersion: 4

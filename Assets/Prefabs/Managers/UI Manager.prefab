@@ -47,5 +47,12 @@ MonoBehaviour:
   pausePanel: {fileID: 0}
   optionsPanel: {fileID: 0}
   mainmenuPanel: {fileID: 0}
+  savePanel: {fileID: 0}
   resolutionDropdown: {fileID: 0}
+  coinText: {fileID: 0}
+  crystalText: {fileID: 0}
+  healthArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 4630fe515436cca4a9fcddff1ed76ce1, type: 2}

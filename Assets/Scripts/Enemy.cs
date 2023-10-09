@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D playerRb;
     [SerializeField]
     private int currentDmg;
+    [SerializeField]
+    private Collider2D[] playerHit;
 
 
     [Header("Patrol")]
@@ -97,10 +99,11 @@ public class Enemy : MonoBehaviour
                     patrolDestination = 1;
                 }
                 //check if player is close, then attacks
-                if (Vector2.Distance(transform.position, player.position) < 2f)
+                if (Vector2.Distance(transform.position, player.position) < 1f)
                 {
                     animator.SetBool("isWalking", false);
                     state = State.Attack;
+                    
                 }
                 
             }
@@ -115,7 +118,7 @@ public class Enemy : MonoBehaviour
                     patrolDestination = 0;
                 }
                 //check if player is close, then attacks
-                if (Vector2.Distance(transform.position, player.transform.position) < 2f)
+                if (Vector2.Distance(transform.position, player.transform.position) < 1f)
                 {
                     animator.SetBool("isWalking", false);
                     state = State.Attack;
@@ -143,7 +146,7 @@ public class Enemy : MonoBehaviour
     public void EnemyMeleeAttackAnimation()
     {
         //check to see what enemies you hit and put it in a arraylist
-        Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+        playerHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
 
 
         foreach (Collider2D player in playerHit)

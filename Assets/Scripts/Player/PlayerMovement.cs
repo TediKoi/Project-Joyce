@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     private bool isFacingRight = true;
     private bool canDoubleJump = true;
     private bool wasJumping;
+    private bool isJumping;
     
     
 
@@ -40,7 +41,10 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         
         Flip();
 
-        
+        if(IsGrounded() && !isJumping)
+        {
+            canDoubleJump = false;
+        }
 
     }
 
@@ -97,6 +101,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 
         if(context.performed)
         {
+            isJumping = true;
             if(IsGrounded() || canDoubleJump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);

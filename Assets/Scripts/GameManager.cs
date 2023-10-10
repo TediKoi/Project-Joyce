@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     public bool youWin;
     public bool isPaused;
+    public bool fadingToMenu;
 
     public int currentLevel;
     public int currentHealth;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        fadingToMenu = false;
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        if(isPaused)
+        if(isPaused && !fadingToMenu)
         {
             Time.timeScale = 0;
         }

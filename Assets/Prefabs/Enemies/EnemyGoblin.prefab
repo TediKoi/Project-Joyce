@@ -254,17 +254,18 @@ MonoBehaviour:
   player: {fileID: 0}
   rb: {fileID: 1731027935816125054}
   attackPoint: {fileID: 4321744603101768111}
-  attackRange: 0.89
+  attackRange: 0.2
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  kbForce: 200
+  kbForce: 800
   kbDuration: 2
   kbDirection: {x: 0, y: 0}
   force: {x: 0, y: 0}
   upwardForce: 1
   playerRb: {fileID: 0}
   currentDmg: 1
+  playerHit: []
   patrolPoints:
   - {fileID: 2511082901514971069}
   - {fileID: 2153904392118722095}

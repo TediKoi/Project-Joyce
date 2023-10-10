@@ -33546,6 +33546,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 174550900015317070, guid: ea6f36bf491020643a6e800da483c236, type: 3}
+      propertyPath: m_Mass
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4554485281890489976, guid: ea6f36bf491020643a6e800da483c236, type: 3}
       propertyPath: m_Name
       value: Joyce Player
@@ -33728,9 +33732,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1372867532}
     - target: {fileID: 7428851208031210290, guid: a057f44a25388524cab26e47958b5885, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428851208031210290, guid: a057f44a25388524cab26e47958b5885, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1372867532}
+      objectReference: {fileID: 7842813737518132518}
+    - target: {fileID: 7428851208031210290, guid: a057f44a25388524cab26e47958b5885, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428851208031210290, guid: a057f44a25388524cab26e47958b5885, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FadeLevelChanger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428851208031210290, guid: a057f44a25388524cab26e47958b5885, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019563063017496002, guid: a057f44a25388524cab26e47958b5885, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8620029636305352395, guid: a057f44a25388524cab26e47958b5885, type: 3}
       propertyPath: m_Name
       value: Canvas

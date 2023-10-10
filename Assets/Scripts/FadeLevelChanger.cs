@@ -31,4 +31,11 @@ public class FadeLevelChanger : MonoBehaviour
     {
         levelLoader.LoadLevel(levelToLoad);
     }
+
+    public void FadeToMenu(int levelIndex)
+    {
+        levelToLoad = levelIndex;
+        GameManager.GetInstance().fadingToMenu = true;
+        animator.SetTrigger("fadeOut");
+    }
 }

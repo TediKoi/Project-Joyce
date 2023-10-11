@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     private LayerMask groundLayer;
     [SerializeField]
     public Animator animator;
+    [SerializeField]
+    private ParticleSystem dust;
     
     
 
@@ -107,6 +109,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
                 canDoubleJump = !canDoubleJump;
                 animator.SetBool("isJumping", true);
+                PlayDust();
                 AudioManager.GetInstance().PlaySFX(1);
                 
             }
@@ -145,7 +148,10 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         data.playerPos = this.transform.position;
     }
 
-    
+    private void PlayDust()
+    {
+        dust.Play();
+    }
 
     
 

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private Transform player;
     [SerializeField]
     private Rigidbody2D rb;
+    private BoxCollider2D collider;
 
 
     [Header("Attacking")]
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        collider = GetComponent<BoxCollider2D>();
         state = State.Patrol;
     }
 
@@ -188,6 +189,8 @@ public class Enemy : MonoBehaviour
         Debug.Log("enemy died");
         animator.SetTrigger("isDead");
         AudioManager.GetInstance().GoblinSFX(6);
+        collider.enabled = false;
+        rb.simulated = false;
         
     }
 

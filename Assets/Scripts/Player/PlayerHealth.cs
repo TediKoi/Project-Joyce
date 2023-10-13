@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
     public int currentHealth = 0;
     [SerializeField]
     private PlayerMovement playerMovement;
+    [SerializeField]
+    private ParticleSystem blood;
 
     private static PlayerHealth instance;
 
@@ -35,6 +37,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         currentHealth -= dmg;
         playerMovement.animator.SetTrigger("isHurt");
         AudioManager.GetInstance().PlaySFX(7);
+        blood.Play();
         if (currentHealth <= 0)
         {
             PlayerDead();

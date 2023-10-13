@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     private Transform player;
     [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
+    private ParticleSystem blood;
     private BoxCollider2D collider;
 
 
@@ -171,6 +173,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= dmg;
         animator.SetTrigger("isHurt");
         AudioManager.GetInstance().GoblinSFX(5);
+        blood.Play();
         if(currentHealth <= 0)
         {
             Die();

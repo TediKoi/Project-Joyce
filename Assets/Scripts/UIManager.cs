@@ -100,9 +100,14 @@ public class UIManager : MonoBehaviour, IDataPersistence
         optionsPanel.SetActive(true);
     }
 
-    public void SetMasterVolume(float volume)
+    public void SetBGMVolume(float volume)
     {
-        audioMixer.SetFloat("masterVolume", volume);
+        audioMixer.SetFloat("bgmVolume", volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("sfxVolume", volume);
     }
     
     public void SetQuality(int index)

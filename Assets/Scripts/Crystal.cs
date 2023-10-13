@@ -7,10 +7,17 @@ public class Crystal : MonoBehaviour, IDataPersistence
     [SerializeField] private string id;
     public bool collected;
 
+    [SerializeField] private ParticleSystem boomParticle;
+
     [ContextMenu("Generate unique id")]
     private void GenerateGuid()
     {
         id = System.Guid.NewGuid().ToString();
+    }
+
+    private void Start()
+    {
+
     }
 
     public void LoadData(GameData data)
@@ -39,6 +46,7 @@ public class Crystal : MonoBehaviour, IDataPersistence
             GameManager.GetInstance().crystalCount++;
             UIManager.GetInstance().UpdateCrystals(GameManager.GetInstance().crystalCount);
             AudioManager.GetInstance().PlaySFX(10);
+            boomParticle.Play();
             this.gameObject.SetActive(false);
         }
     }

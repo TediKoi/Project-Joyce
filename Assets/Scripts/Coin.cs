@@ -8,6 +8,8 @@ public class Coin : MonoBehaviour, IDataPersistence
     [SerializeField] private string id;
     public bool collected;
 
+    [SerializeField] private ParticleSystem boomParticle;
+
     [ContextMenu("Generate unique id")]
     private void GenerateGuid()
     {
@@ -40,6 +42,7 @@ public class Coin : MonoBehaviour, IDataPersistence
             GameManager.GetInstance().coinCount++;
             UIManager.GetInstance().UpdateCoins(GameManager.GetInstance().coinCount);
             AudioManager.GetInstance().PlaySFX(9);
+            boomParticle.Play();
             this.gameObject.SetActive(false);
         }
     }

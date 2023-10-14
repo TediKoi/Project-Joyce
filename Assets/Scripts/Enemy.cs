@@ -8,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Enemy : MonoBehaviour
 {
-    private enum State { Patrol, Attack };
+    private enum State { Patrol, Attack, Idle };
     private State state;
     
 
@@ -80,9 +80,11 @@ public class Enemy : MonoBehaviour
             case State.Attack:
                 EnemyAttack();
                 break;
-            
-            
+            case State.Idle:
+                Idle();
+                break;
         }
+
 
     }
 
@@ -142,12 +144,16 @@ public class Enemy : MonoBehaviour
             animator.SetBool("isAttacking", false);
             state = State.Patrol;
         }
-        
+        if(GameManager.GetInstance().gameOver)
+        {
+            state = State.Idle;
+        }
     }
 
     
     public void EnemyMeleeAttackAnimation()
     {
+        
         //check to see what enemies you hit and put it in a arraylist
         playerHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
 
@@ -164,7 +170,10 @@ public class Enemy : MonoBehaviour
         }
     }
    
-
+    public void Idle()
+    {
+        animator.SetBool("isAttacking", false);
+    }
     
 
     public void TakeDmg(int dmg)

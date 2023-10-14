@@ -52,6 +52,12 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence
         playerMovement.animator.SetTrigger("isDead");
     }
 
+    public void GameOver()
+    {
+        GameManager.GetInstance().gameOver = true;
+
+    }
+
     public void LoadData(GameData data)
     {
         this.currentHealth = data.health;

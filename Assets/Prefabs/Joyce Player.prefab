@@ -311,7 +311,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  kbForce: 500
+  kbForce: 3000
   kbDuration: 2
 --- !u!114 &547781484817686719
 MonoBehaviour:

@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         Pause();
         UpdateCoinsText();
         UpdateCrystalsText();
+        GameOver();
     }
 
     public static GameManager GetInstance()
@@ -61,7 +62,14 @@ public class GameManager : MonoBehaviour
         UIManager.GetInstance().UpdateCrystals(crystalCount);
     }
 
-    
+    public void GameOver()
+    {
+        if(gameOver)
+        {
+            
+            UIManager.GetInstance().GameOverScreen();
+        }
+    }
 
     
 }

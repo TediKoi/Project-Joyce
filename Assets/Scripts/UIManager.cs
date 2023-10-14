@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public TMP_Text coinText;
     public TMP_Text crystalText;
     public Image[] healthArray;
+    public GameObject gameOverGroup;
  
     public AudioMixer audioMixer;
     
@@ -208,5 +209,12 @@ public class UIManager : MonoBehaviour, IDataPersistence
                 healthArray[i].enabled = false;
             }
         }
+    }
+
+    // ----------------------------------------------------------- GAME OVER -----------------------------------------------
+
+    public void GameOverScreen()
+    {
+        gameOverGroup.SetActive(true);
     }
 }

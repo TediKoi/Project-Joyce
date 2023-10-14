@@ -47,6 +47,14 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         {
             canDoubleJump = false;
         }
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
+        else
+        {
+            rb.constraints = ~RigidbodyConstraints2D.FreezePosition;
+        }
 
     }
 
@@ -100,8 +108,11 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 
     public void Jump(InputAction.CallbackContext context)
     {
-
-        if(context.performed)
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+        if (context.performed)
         {
             isJumping = true;
             if(IsGrounded() || canDoubleJump)

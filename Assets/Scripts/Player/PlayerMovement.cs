@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         {
             canDoubleJump = false;
         }
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        if (DialogueManager.GetInstance().dialogueIsPlaying || TimelineEvents.GetInstance().inCutscene)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }

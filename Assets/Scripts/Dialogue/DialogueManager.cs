@@ -73,7 +73,8 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         
         animator.SetBool("isOpen", true);
-        continueButton.SetActive(true);
+        
+        
 
         ContinueStory();
     }
@@ -82,6 +83,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         animator.SetBool("isOpen", false);
+        TimelineEvents.GetInstance().ExitTimeline();
 
         StartCoroutine(DialogueIdle());
         
@@ -93,6 +95,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
+            
             continueButton.SetActive(true);
             //set text for the current dialogue line
             dialogueText.text = currentStory.Continue();

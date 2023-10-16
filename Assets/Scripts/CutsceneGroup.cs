@@ -20,4 +20,9 @@ public class CutsceneGroup : MonoBehaviour
     {
         TimelineEvents.GetInstance().inCutscene = false;
     }
+
+    public void InCutsceneBool()
+    {
+        TimelineEvents.GetInstance().inCutscene=true;
+    }
 }

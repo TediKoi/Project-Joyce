@@ -15,6 +15,8 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler fileDataHandler;
 
+    public bool isNewGame;
+
     private void Awake()
     {
         if (instance != null)
@@ -35,6 +37,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        isNewGame = true;
     }
 
     public void LoadGame()

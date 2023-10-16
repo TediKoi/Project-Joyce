@@ -72,7 +72,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        if (DialogueManager.GetInstance().dialogueIsPlaying || TimelineEvents.GetInstance().inCutscene || GameManager.GetInstance().isPaused)
         {
             return;
         }

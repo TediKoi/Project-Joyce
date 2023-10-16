@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        if (DialogueManager.GetInstance().dialogueIsPlaying || TimelineEvents.GetInstance().inCutscene || GameManager.GetInstance().isPaused)
         {
             return;
         }

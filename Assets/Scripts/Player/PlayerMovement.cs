@@ -40,7 +40,10 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.GetInstance().isPaused)
+        {
+            AudioManager.GetInstance().FootstepsOff();
+        }
         Flip();
 
         if(IsGrounded() && !isJumping)
@@ -72,6 +75,8 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         {
             AudioManager.GetInstance().FootstepsOff();
         }
+
+        
     }
 
     public bool IsGrounded()
@@ -94,7 +99,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 
     public void Move(InputAction.CallbackContext context)
     {
-        if(DialogueManager.GetInstance().dialogueIsPlaying)
+        if(DialogueManager.GetInstance().dialogueIsPlaying || TimelineEvents.GetInstance().inCutscene || GameManager.GetInstance().isPaused)
         {
             return;
         }
@@ -108,7 +113,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        if (DialogueManager.GetInstance().dialogueIsPlaying || TimelineEvents.GetInstance().inCutscene || GameManager.GetInstance().isPaused)
         {
             return;
         }

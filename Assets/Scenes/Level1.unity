@@ -4585,7 +4585,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f73c09c5453a8d24ab529eb6021cec08, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -4674,7 +4674,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inkJSON: {fileID: 4900000, guid: 3be5d6a0a83a17c4b9273cb9342feb14, type: 3}
   cutsceneBars: {fileID: 1571822283}
+  player: {fileID: 5856787955996301025}
   inCutscene: 0
+  playables:
+  - {fileID: 11400000, guid: f73c09c5453a8d24ab529eb6021cec08, type: 2}
 --- !u!1 &940993800
 GameObject:
   m_ObjectHideFlags: 0

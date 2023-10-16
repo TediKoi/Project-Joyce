@@ -13,7 +13,10 @@ public class TimelineEvents : MonoBehaviour
     private GameObject player;
 
     public bool inCutscene;
+    public List<PlayableAsset> playables;
     private PlayableDirector director;
+    private PlayableAsset myPlayable;
+    
 
     private static TimelineEvents instance;
 
@@ -23,6 +26,10 @@ public class TimelineEvents : MonoBehaviour
     {
         instance = this;
         director = GetComponent<PlayableDirector>();
+        if (DataPersistenceManager.instance.isNewGame)
+        {
+            PlayCutscene(0);
+        }
     }
 
     // Update is called once per frame
@@ -41,6 +48,12 @@ public class TimelineEvents : MonoBehaviour
         DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
     }
 
+    public void PlayCutscene(int index)
+    {
+        myPlayable = playables[index];
+        director.Play(myPlayable);
+    }
+
     public void LoadCutsceneBars()
     {
         inCutscene = true;
@@ -56,7 +69,6 @@ public class TimelineEvents : MonoBehaviour
     public void ExitTimeline()
     {
         director.Stop();
-        
         player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y, 0);
     }
 }

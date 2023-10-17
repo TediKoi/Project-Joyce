@@ -8,6 +8,8 @@ public class JoyceDialogueTrigger : MonoBehaviour
 {
     [Header("Dialogue Panel")]
     [SerializeField] private Image panel;
+    [SerializeField] private Image choicesPanel;
+    [SerializeField] private Image namePanel;
     [SerializeField] private Image panelProfileImage;
     [SerializeField] private TextMeshProUGUI panelProfileName;
     [SerializeField] private Sprite profileImage;
@@ -29,6 +31,8 @@ public class JoyceDialogueTrigger : MonoBehaviour
     public void SetJoyceDialoguePanel()
     {
         panel.color = panelColor;
+        choicesPanel.color = panelColor;
+        namePanel.color = panelColor;
         panelProfileImage.sprite = profileImage;
         panelProfileName.text = profileName;
     }

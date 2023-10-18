@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.GetInstance().isPaused)
+        if (GameManager.GetInstance().isPaused || DialogueManager.GetInstance().dialogueIsPlaying)
         {
             AudioManager.GetInstance().FootstepsOff();
         }
